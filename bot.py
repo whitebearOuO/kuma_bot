@@ -100,8 +100,9 @@ async def help(ctx): #我自己的help OuO
 
 @bot.command()
 async def ping(ctx):
-	print((f'{round(bot.latency*1000)} ***ms**'))
-    await ctx.send(f'{round(bot.latency*1000)} ***ms**')
+	await ctx.send("ping是...")
+	await ctx.send(f"`{round(bot.latency*1000) }ms` owo")
+	#await message.edit(content=f"Pong!  `{round(bot.latency*1000)}ms`")
     #round 小數點四捨五入
 
 """    
