@@ -97,12 +97,14 @@ async def help(ctx): #我自己的help OuO
     embed.set_footer(text="指令持續增加中owo")
     await ctx.send(embed=embed)
 
-"""
+
 @bot.command()
 async def ping(ctx):
-    await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
-"""
-    
+	print((f'{round(bot.latency*1000)} ***ms**'))
+    await ctx.send(f'{round(bot.latency*1000)} ***ms**')
+    #round 小數點四捨五入
+
+"""    
 @bot.command()
 async def ping(ctx):
     before = time.monotonic()
@@ -113,6 +115,8 @@ async def ping(ctx):
     embed=discord.Embed(color=0x37e1dd)
     embed.add_field(name=f"**ping:** {int(ping)}ms", value="", inline=False)
     await ctx.send(embed=embed)
+"""
+
 '''======================================================================================='''
 
 bot.run('NzA4ODgxOTAyMTM1NjcyODg0.Xrd0aw.qrBvJWs4bCG5mWgmgrwRlr70-Oo')
