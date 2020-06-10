@@ -17,6 +17,18 @@ async def on_ready():
     print('------')
     
 '''======================================================================================='''
+
+@bot.event
+async def on_member_join(member):
+	print(f'{member} join!')
+	channel = bot.get_channel(711411107738288160)
+	await channel.send(f'{member} join!')
+
+@bot.event
+async def on_member_remove(member):
+	print(f'{member} leave!')
+	channel = bot.get_channel(711411107738288160)
+	await channel.send(f'{member} leave!')
     
 @bot.command()
 async def covid19(ctx): #武漢肺炎確診人數
