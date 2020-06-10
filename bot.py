@@ -6,7 +6,7 @@ import os
 import time
 import json
 
-with open('setting.json', 'r', encoding='itf8') as jfile:
+with open('setting.json', 'r', encoding='utf8') as jfile:
 	jdata = json.load(jfile)
 
 '''======================================================================================='''
@@ -25,13 +25,13 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
 	print(f'{member} join!')
-	channel = bot.get_channel(711411107738288160)
+	channel = bot.get_channel(int(jdata['Welcome_channel']))
 	await channel.send(f'{member} join!')
 
 @bot.event
 async def on_member_remove(member):
 	print(f'{member} leave!')
-	channel = bot.get_channel(711411107738288160)
+	channel = bot.get_channel(int(jdata['Leave_channel']))
 	await channel.send(f'{member} leave!')
     
 @bot.command()
