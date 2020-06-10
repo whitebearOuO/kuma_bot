@@ -4,11 +4,15 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import time
+import json
+
+with open('setting.json', 'r', encoding='itf8') as jfile:
+	jdata = json.load(jfile)
+
+'''======================================================================================='''
 
 bot = commands.Bot(command_prefix='owo ') #呼叫bot的方法 owo
 
-'''======================================================================================='''
-    
 @bot.event #這裡的會在小黑窗出來
 async def on_ready():
     print('logging as') 
@@ -120,4 +124,4 @@ async def ping(ctx):
 
 '''======================================================================================='''
 
-bot.run('NzA4ODgxOTAyMTM1NjcyODg0.Xrd0aw.qrBvJWs4bCG5mWgmgrwRlr70-Oo')
+bot.run(jdata['TOKEN'])
