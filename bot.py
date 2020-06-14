@@ -36,7 +36,6 @@ async def on_member_remove(member):
     
 @bot.command()
 async def covid19(ctx): #武漢肺炎確診人數
-    article_href = []
     r = requests.get("https://nidss.cdc.gov.tw/ch/NIDSS_DiseaseMap.aspx?dc=1&dt=5&disease=19CoV")
     s = r.text[r.text.find('<span id="ctl00_NIDSSContentPlace_Table">'):].split('\n')[0]
     soup = BeautifulSoup(s,"html.parser")
