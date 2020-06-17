@@ -118,18 +118,29 @@ async def web_pict(ctx):
     random_pic = random.choice(jdata['url_pic'])
     await ctx.send(random_pic)
 
-"""    
 @bot.command()
-async def ping(ctx):
-    before = time.monotonic()
-    message = await ctx.send("Pong!")
-    ping = (time.monotonic() - before) * 1000
-    await message.edit(content=f"Pong!  `{int(ping)}ms`")
-    print(f'Ping {int(ping)}ms')
-    embed=discord.Embed(color=0x37e1dd)
-    embed.add_field(name=f"**ping:** {int(ping)}ms", value="", inline=False)
-    await ctx.send(embed=embed)
+async def upload(ctx):
+    response = requests.get(ctx.message.attachments[0].url)
+    file = open("sample_image.png", "wb")
+    file.write(response.content)
+    file.close()
+@bot.command()
+async def show_pic(ctx):
+    with open('sample_image.png', 'rb') as f:
+        picture = discord.File(f)
+        await ctx.send(file = picture)
+
+
 """
+@bot.command()
+async def hello(ctx):
+    files = []
+    for file in ctx.message.attachments:
+        fp = BytesIO()
+        await file.save(fp)
+        files.append(discord.File(fp, filename=file.filename, spoiler=file.is_spoiler()))
+    await ctx.send(files=files)
+"""    
 
 '''======================================================================================='''
 
