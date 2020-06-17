@@ -1,5 +1,7 @@
 {
 	"TOKEN": "NzA4ODgxOTAyMTM1NjcyODg0.Xrd0aw.qrBvJWs4bCG5mWgmgrwRlr70-Oo",
 	"Welcome_channel": "711411107738288160",
-	"Leave_channel": "711411107738288160"
+	"Leave_channel": "711411107738288160",
+	"pic": ["C:\\Users\\student\\Documents\\GitHub\\kuma_bot\\picture\\whitebearOuO.png", "C:\\Users\\student\\Documents\\GitHub\\kuma_bot\\picture\\whitebearowo.png"],
+	"url_pic": ["https://pbs.twimg.com/media/EZuQ9DQUEAEzVyV?format=jpg&name=900x900", "https://pbs.twimg.com/media/EaoBjNNU0AAf-Wg?format=jpg&name=small", "https://pbs.twimg.com/media/Eai4LToU0AAVC64?format=jpg&name=900x900", "https://pbs.twimg.com/media/EagnUo7VAAAefxb?format=jpg&name=900x900", "https://pbs.twimg.com/media/EagnUo8UwAAZhDa?format=jpg&name=900x900"]
 }

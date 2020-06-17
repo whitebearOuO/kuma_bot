@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 import os
 import time
 import json
+import random
+
+'''======================================================================================='''
 
 with open('setting.json', 'r', encoding='utf8') as jfile:
 	jdata = json.load(jfile)
@@ -70,10 +73,6 @@ async def view(ctx, which, info): #查看日記
             f.close()
             await ctx.send(s)
     
-@bot.command() #說hello owo
-async def hello(ctx):
-    await ctx.send("hello owo")
-    
 '''======================================================================================='''
 
 @bot.command()
@@ -107,6 +106,17 @@ async def ping(ctx):
 	await ctx.send(f"`{round(bot.latency*1000) }ms` owo")
 	#await message.edit(content=f"Pong!  `{round(bot.latency*1000)}ms`")
     #round 小數點四捨五入
+
+@bot.command()
+async def pict(ctx):
+    random_pic = random.choice(jdata['pic'])
+    pic = discord.File(random_pic)
+    await ctx.send(file = pic)
+
+@bot.command()
+async def web_pict(ctx):
+    random_pic = random.choice(jdata['url_pic'])
+    await ctx.send(random_pic)
 
 """    
 @bot.command()
