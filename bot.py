@@ -36,6 +36,8 @@ async def on_member_remove(member):
 	print(f'{member} leave!')
 	channel = bot.get_channel(int(jdata['Leave_channel']))
 	await channel.send(f'{member} leave!')
+
+'''======================================================================================='''
     
 @bot.command()
 async def covid19(ctx): #武漢肺炎確診人數
@@ -84,7 +86,7 @@ async def info(ctx): #詳細資訊 但其實不怎麼詳細
     embed.add_field(name="可...可惡", value="bot好難寫owo", inline=False)
     await ctx.send(embed=embed)
     
-bot.remove_command('help') #篩除原本的help
+bot.remove_command('help') #刪除原本的help
 @bot.command()
 async def help(ctx): #我自己的help OuO
     embed=discord.Embed(title="那個神奇的help選單OuO", description="所有的指令開頭都是owo喔", color=0x37e1dd)
@@ -101,14 +103,14 @@ async def help(ctx): #我自己的help OuO
 
 
 @bot.command()
-async def ping(ctx):
+async def ping(ctx): #ping
 	await ctx.send("ping是...")
 	await ctx.send(f"`{round(bot.latency*1000) }ms` owo")
 	#await message.edit(content=f"Pong!  `{round(bot.latency*1000)}ms`")
     #round 小數點四捨五入
 
 @bot.command()
-async def pict(ctx):
+async def pict(ctx): #傳本機圖片
     random_pic = random.choice(jdata['pic'])
     pic = discord.File(random_pic)
     await ctx.send(file = pic)
