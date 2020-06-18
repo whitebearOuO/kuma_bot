@@ -22,8 +22,6 @@ async def on_ready():
     print(bot.user.name) #bot的名字 kuma
     print(bot.user.id) #bot的id 70啥的
     print('------')
-    
-'''======================================================================================='''
 
 @bot.event
 async def on_member_join(member):
@@ -55,6 +53,7 @@ async def add_diary(ctx, date, title,* , content): #增加日記
     with open("diary/"+date, 'w') as f:
         print(title, content, sep= '\n', file = f)
     await ctx.send('done')
+    print("日記增加完成owo")
     
 @bot.command()
 async def view(ctx, which, info): #查看日記
@@ -74,6 +73,7 @@ async def view(ctx, which, info): #查看日記
             s = f.read()
             f.close()
             await ctx.send(s)
+    print("成功查看日記owo")
     
 '''======================================================================================='''
 
@@ -85,6 +85,7 @@ async def info(ctx): #詳細資訊 但其實不怎麼詳細
     embed.add_field(name="入侵幾個伺服器了owo", value=f"{len(bot.guilds)}")
     embed.add_field(name="可...可惡", value="bot好難寫owo", inline=False)
     await ctx.send(embed=embed)
+    print("已送出info owo")
     
 bot.remove_command('help') #刪除原本的help
 @bot.command()
@@ -100,13 +101,14 @@ async def help(ctx): #我自己的help OuO
     embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False)
     embed.set_footer(text="指令持續增加中owo")
     await ctx.send(embed=embed)
-
+    print("已送出help列表owo")
 
 @bot.command()
 async def ping(ctx): #ping
-	await ctx.send("ping是...")
-	await ctx.send(f"`{round(bot.latency*1000) }ms` owo")
-	#await message.edit(content=f"Pong!  `{round(bot.latency*1000)}ms`")
+    message = await ctx.send("ping是...")
+    p = round(bot.latency*1000)
+    await message.edit(content= f"`{p }ms` owo")
+    print(f"`{p }ms` owo")
     #round 小數點四捨五入
 
 @bot.command()
@@ -131,7 +133,6 @@ async def show_pic(ctx):
     with open('sample_image.png', 'rb') as f:
         picture = discord.File(f)
         await ctx.send(file = picture)
-
 
 """
 @bot.command()
