@@ -122,6 +122,7 @@ async def web_pict(ctx): #
     random_pic = random.choice(jdata['url_pic'])
     await ctx.send(random_pic)
 
+"""
 @bot.command()
 async def add_diary(ctx, date, title,* , content): #增加日記
     with open("diary/"+date, 'w') as f:
@@ -148,10 +149,10 @@ async def view(ctx, which, info): #查看日記
             f.close()
             await ctx.send(s)
     print("成功查看日記owo")
-    
+"""
 
 @bot.command()
-async def upload(ctx, ta):
+async def upload(ctx, tag, date):
     response = requests.get(ctx.message.attachments[0].url)
     file = open("sample_image.png", "wb")
     file.write(response.content)
