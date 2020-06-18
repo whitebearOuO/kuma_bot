@@ -118,12 +118,40 @@ async def pict(ctx): #傳本機圖片
     await ctx.send(file = pic)
 
 @bot.command()
-async def web_pict(ctx):
+async def web_pict(ctx): #
     random_pic = random.choice(jdata['url_pic'])
     await ctx.send(random_pic)
 
 @bot.command()
-async def upload(ctx):
+async def add_diary(ctx, date, title,* , content): #增加日記
+    with open("diary/"+date, 'w') as f:
+        print(title, content, sep= '\n', file = f)
+    await ctx.send('done')
+    print("日記增加完成owo")
+    
+@bot.command()
+async def view(ctx, which, info): #查看日記
+    if which == 'title':
+        files = os.listdir("diary")
+        for i in files:
+            path = "diary/"+i
+            s = open(path, 'r').read()
+            title = s.split('\n')[0]
+            if title == info:
+                await ctx.send(s)
+    elif which == 'date':
+        files = os.listdir("diary")
+        if info in files:
+            #s = open("diary/"+info, 'r').read()
+            f = open("diary/"+info, 'r')
+            s = f.read()
+            f.close()
+            await ctx.send(s)
+    print("成功查看日記owo")
+    
+
+@bot.command()
+async def upload(ctx, ta):
     response = requests.get(ctx.message.attachments[0].url)
     file = open("sample_image.png", "wb")
     file.write(response.content)
