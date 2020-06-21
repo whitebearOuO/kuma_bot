@@ -6,6 +6,7 @@ import os
 import time
 import json
 import random
+from time import sleep
 
 '''======================================================================================='''
 
@@ -15,6 +16,8 @@ with open('setting.json', 'r', encoding='utf8') as jfile:
 '''======================================================================================='''
 
 bot = commands.Bot(command_prefix='owo ') #呼叫bot的方法 owo
+
+#event區
 
 @bot.event #這裡的會在小黑窗出來
 async def on_ready():
@@ -27,13 +30,25 @@ async def on_ready():
 async def on_member_join(member):
 	print(f'{member} join!')
 	channel = bot.get_channel(int(jdata['Welcome_channel']))
-	await channel.send(f'{member} join!')
+	await channel.send(f'{member} join! :tada::tada::tada:')
 
 @bot.event
 async def on_member_remove(member):
 	print(f'{member} leave!')
 	channel = bot.get_channel(int(jdata['Leave_channel']))
-	await channel.send(f'{member} leave!')
+	await channel.send(f'{member} leave!:disappointed_relieved:')
+
+@bot.event
+async def on_message(msg):
+    if msg.content == "owo" and msg.author != bot.user:
+        await msg.channel.send("owo")
+    await bot.process_commands(msg)
+    #if msg.contect in keyword and 
+
+@bot.event
+async def on_member_update(before, after):
+    if str(before.status) != str(after.status):
+        print(f"{after.name} 現在ㄉ狀態是 {after.status}")
 
 '''======================================================================================='''
     
@@ -122,57 +137,28 @@ async def web_pict(ctx): #
     random_pic = random.choice(jdata['url_pic'])
     await ctx.send(random_pic)
 
-"""
-@bot.command()
-async def add_diary(ctx, date, title,* , content): #增加日記
-    with open("diary/"+date, 'w') as f:
-        print(title, content, sep= '\n', file = f)
-    await ctx.send('done')
-    print("日記增加完成owo")
-    
-@bot.command()
-async def view(ctx, which, info): #查看日記
-    if which == 'title':
-        files = os.listdir("diary")
-        for i in files:
-            path = "diary/"+i
-            s = open(path, 'r').read()
-            title = s.split('\n')[0]
-            if title == info:
-                await ctx.send(s)
-    elif which == 'date':
-        files = os.listdir("diary")
-        if info in files:
-            #s = open("diary/"+info, 'r').read()
-            f = open("diary/"+info, 'r')
-            s = f.read()
-            f.close()
-            await ctx.send(s)
-    print("成功查看日記owo")
-"""
-
 @bot.command()
 async def upload(ctx, tag, date):
     response = requests.get(ctx.message.attachments[0].url)
     file = open("sample_image.png", "wb")
     file.write(response.content)
     file.close()
+
 @bot.command()
 async def show_pic(ctx):
     with open('sample_image.png', 'rb') as f:
         picture = discord.File(f)
         await ctx.send(file = picture)
 
-"""
 @bot.command()
-async def hello(ctx):
-    files = []
-    for file in ctx.message.attachments:
-        fp = BytesIO()
-        await file.save(fp)
-        files.append(discord.File(fp, filename=file.filename, spoiler=file.is_spoiler()))
-    await ctx.send(files=files)
-"""    
+async def say(ctx, *, msg):
+    await ctx.message.delete()
+    await ctx.send(msg)
+
+@bot.command()
+@commands.is_owner()
+async def clean(ctx, num:int):
+    await ctx.channel.purge(limit=num+1)
 
 '''======================================================================================='''
 
