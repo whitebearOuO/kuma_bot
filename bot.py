@@ -42,10 +42,18 @@ async def on_member_remove(member):
 async def on_message(msg):
     if msg.content == "owo" and msg.author != bot.user:
         await msg.channel.send("owo")
+    elif msg.content == "owoowo" and msg.author != bot.user:
+        await msg.channel.send("uwuowo")
+    elif msg.content == "owoowoowo" and msg.author != bot.user:
+        await msg.channel.send("howl~ owo")
+    elif msg.content == "owoowoowoowo" and msg.author != bot.user:
+        await msg.channel.send("howl howl howl")
+    elif msg.content.endswith("owo") and msg.author != bot.user:
+        await msg.channel.send("你也是owo教的嗎")
     await bot.process_commands(msg)
     #if msg.contect in keyword and 
 
-@bot.event
+@bot.event #成員狀態改變
 async def on_member_update(before, after):
     if str(before.status) != str(after.status):
         print(f"{after.name} 現在ㄉ狀態是 {after.status}")
@@ -107,13 +115,18 @@ bot.remove_command('help') #刪除原本的help
 async def help(ctx): #我自己的help OuO
     embed=discord.Embed(title="那個神奇的help選單OuO", description="所有的指令開頭都是owo喔", color=0x37e1dd)
     embed.set_thumbnail(url="https://images6.alphacoders.com/674/674742.jpg")
-    embed.add_field(name="owo help", value="跳出help清單", inline=False)
-    embed.add_field(name="owo info", value="有關bot的資訊", inline=False)
+    embed.add_field(name="owo help", value="跳出help清單", inline=False) #1
+    embed.add_field(name="owo info", value="有關bot的資訊", inline=False) #2
     embed.add_field(name="owo add_diary [title] [date] [content] ", value="紀錄日記(標題不可有空白，內容可以)", inline=False)
     embed.add_field(name="owo view title [title]", value="以標題去搜尋日記", inline=False)
     embed.add_field(name="owo view date [date]", value="以日期去搜尋日記", inline=False)
     embed.add_field(name="owo covid19", value="查看目前武漢肺炎人數", inline=False)
-    embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False)
+    embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False) #3
+    embed.add_field(name="owo upload [tag] [date]", value="上傳圖片", inline=False)
+    embed.add_field(name="owo search_pic [tag/date]", value="搜尋上傳的圖片", inline=False)
+    embed.add_field(name="owo fox", value="白熊收藏的狐狸照片精選", inline=False) #4
+    embed.add_field(name="owo clean", value="刪除訊息，不過只有白熊可以用", inline=False) #5
+    embed.add_field(name="owo say [訊息]", value="bot幫你說話，偷嘴人的好工具", inline=False) #6
     embed.set_footer(text="指令持續增加中owo")
     await ctx.send(embed=embed)
     print("已送出help列表owo")
@@ -127,35 +140,33 @@ async def ping(ctx): #ping
     #round 小數點四捨五入
 
 @bot.command()
-async def pict(ctx): #傳本機圖片
-    random_pic = random.choice(jdata['pic'])
-    pic = discord.File(random_pic)
-    await ctx.send(file = pic)
-
-@bot.command()
-async def web_pict(ctx): #
+async def fox(ctx): 
     random_pic = random.choice(jdata['url_pic'])
     await ctx.send(random_pic)
 
 @bot.command()
 async def upload(ctx, tag, date):
     response = requests.get(ctx.message.attachments[0].url)
-    file = open("sample_image.png", "wb")
+    file = open("picture/"+tag+" "+date+".jpg", "wb")
     file.write(response.content)
     file.close()
 
 @bot.command()
-async def show_pic(ctx):
-    with open('sample_image.png', 'rb') as f:
-        picture = discord.File(f)
-        await ctx.send(file = picture)
+async def search_pic(ctx, info):
+    files = os.listdir("picture")
+    for i in files:
+        tmp = i.split()
+        if info == tmp[0] or info+".jpg" == tmp[1]:
+            with open("picture/"+i, 'rb') as f:
+                picture = discord.File(f)
+                await ctx.send(file = picture)
 
-@bot.command()
+@bot.command() #複誦訊息
 async def say(ctx, *, msg):
     await ctx.message.delete()
     await ctx.send(msg)
 
-@bot.command()
+@bot.command() #刪除訊息
 @commands.is_owner()
 async def clean(ctx, num:int):
     await ctx.channel.purge(limit=num+1)
