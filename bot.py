@@ -7,6 +7,7 @@ import time
 import json
 import random
 from time import sleep
+import datetime
 
 '''======================================================================================='''
 
@@ -102,7 +103,9 @@ async def view(ctx, which, info): #查看日記
 
 @bot.command()
 async def info(ctx): #詳細資訊 但其實不怎麼詳細
-    embed=discord.Embed(title="kuma", url="https://discord.com/api/oauth2/authorize?client_id=708881902135672884&permissions=522304&scope=bot", description="一個測試中的bot owo", color=0x37e1dd)
+    username = ctx.message.author.name
+    await ctx.send(username)
+    embed=discord.Embed(title="kuma", url="https://discord.com/api/oauth2/authorize?client_id=708881902135672884&permissions=522304&scope=bot", description="一個測試中的bot owo", color=0x37e1dd, timestamp=datetime.datetime.today())
     embed.set_author(name="白熊", url="https://whitebearouob.blogspot.com/", icon_url="https://1.bp.blogspot.com/-73sa6KNYNEw/XXSaqPkzW9I/AAAAAAAABPE/FQkgJuHgfyceHMON48eMDy8GLkMv9LeMQCLcBGAs/s1600/1518182898346.png")
     embed.set_thumbnail(url="https://images6.alphacoders.com/674/674742.jpg")
     embed.add_field(name="入侵幾個伺服器了owo", value=f"{len(bot.guilds)}")
@@ -113,7 +116,7 @@ async def info(ctx): #詳細資訊 但其實不怎麼詳細
 bot.remove_command('help') #刪除原本的help
 @bot.command()
 async def help(ctx): #我自己的help OuO
-    embed=discord.Embed(title="那個神奇的help選單OuO", description="所有的指令開頭都是owo喔", color=0x37e1dd)
+    embed=discord.Embed(title="那個神奇的help選單OuO", description="所有的指令開頭都是owo喔", color=0x37e1dd, timestamp=datetime.datetime.now())
     embed.set_thumbnail(url="https://images6.alphacoders.com/674/674742.jpg")
     embed.add_field(name="owo help", value="跳出help清單", inline=False) #1
     embed.add_field(name="owo info", value="有關bot的資訊", inline=False) #2
@@ -167,9 +170,13 @@ async def say(ctx, *, msg):
     await ctx.send(msg)
 
 @bot.command() #刪除訊息
-@commands.is_owner()
 async def clean(ctx, num:int):
     await ctx.channel.purge(limit=num+1)
+
+@bot.command()
+async def daily(ctx):
+    await ctx.send("@OwO#8456")
+    print("I don't have daily :(")
 
 '''======================================================================================='''
 
