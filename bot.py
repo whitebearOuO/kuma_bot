@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import requests
-from bs4 import BeautifulSoup
+#import bs4 import BeautifulSoup
 import os
 import time
 import json
