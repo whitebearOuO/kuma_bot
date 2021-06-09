@@ -1,8 +1,7 @@
 import discord
 from discord.ext import commands
-import requests
-#import bs4 import BeautifulSoup
-import os
+import requests,os,urllib
+from bs4 import BeautifulSoup
 import time
 import json
 import random
