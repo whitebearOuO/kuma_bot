@@ -7,6 +7,7 @@ import json
 import random
 from time import sleep
 import datetime
+import keep_alive
 
 '''======================================================================================='''
 
@@ -40,16 +41,52 @@ async def on_member_remove(member):
 
 @bot.event
 async def on_message(msg):
-    if msg.content == "owo" and msg.author != bot.user:
+    if "owo" in msg.content and msg.author != bot.user:
         await msg.channel.send("owo")
-    elif msg.content == "owoowo" and msg.author != bot.user:
-        await msg.channel.send("uwuowo")
-    elif msg.content == "owoowoowo" and msg.author != bot.user:
-        await msg.channel.send("howl~ owo")
-    elif msg.content == "owoowoowoowo" and msg.author != bot.user:
-        await msg.channel.send("howl howl howl")
     elif msg.content.endswith("owo") and msg.author != bot.user:
         await msg.channel.send("你也是owo教的嗎")
+    elif "sui啦" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://media.discordapp.net/attachments/528777088392757260/904307841861566484/picture_suila_0614.jpg")
+#    elif "新年快樂" in msg.content and msg.author != bot.user:
+ #       await msg.channel.send("https://cdn.discordapp.com/attachments/720304918228893746/926503866441285652/received_942388419991119.jpeg")
+    elif "星爆" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904369881691074560/f8c2c3e8af3782606fd163b8ff6eb4e6.gif")
+    elif "噓" in msg.content and msg.author != bot.user:
+        await msg.channel.send("勇者削弱了 1 點精神")
+    elif "騙人" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://media.discordapp.net/attachments/711411107738288160/904376682838892554/47eb58a327c095b5a80512e8e4720bf3.png?width=801&height=450")
+    elif "戲劇化" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904376938750152704/EPGQobk.png")
+    elif "你怎麼可以這樣" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904377414778507264/85445f5013f1572f2c208ea3000509f1.png")
+    elif "好色喔" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904370301893230592/4fd0c420-1c3c-11ec-b1ff-ea1868351416.png")
+#    elif "np" in msg.content and msg.author != bot.user:
+#        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/878527710975107102/picture_np_0702.jpg")
+    elif "好電" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/emojis/855433255871447051.gif?size=96")
+    elif "電神" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/emojis/855433255871447051.gif?size=96")
+    elif "教嗎" in msg.content and msg.author != bot.user:
+        await msg.channel.send("教嗎")
+    elif "好耶" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904377925451800626/latest.png")
+    elif "菜B8" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914464579352920116/2ddcfb8d83fc6420155791b887806ec9.png")
+    elif "幹你娘" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465368360222740/b88f705a275bcacca1044735f7d89035.png")
+    elif "好吧" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465821827407892/RBoqkhk.png")
+    elif "stay cool" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465989289189386/66e047c5ee25f1afd236f873ea4fa55e.png")
+    elif "通知" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914466160437788712/79b73668adb519bc672961345add65e0.png")
+    elif "更快" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914466472624025650/efb1da15cf66f0a35f46184d3eac1d37.png")
+    elif "結束" in msg.content and msg.author != bot.user:
+        await msg.channel.send("https://cdn.discordapp.com/attachments/902205400538034316/917260438268436520/9711f426f96d75947882122126dd0412.png")
+    #elif "什麼" in msg.content and msg.author != bot.user:
+        #await msg.channel.send("https://media.discordapp.net/attachments/711411107738288160/918524002971041822/df4e11893a88a2e4ae228c471de26f74.JPG")
     await bot.process_commands(msg)
     #if msg.contect in keyword and 
 
@@ -58,8 +95,28 @@ async def on_member_update(before, after):
     if str(before.status) != str(after.status):
         print(f"{after.name} 現在ㄉ狀態是 {after.status}")
 
+@bot.command()
+async def load(ctx, extension):
+    bot.load_extension(f'cmds.{extension}')
+    await ctx.send(f'Loaded {extension} done.')
+
+@bot.command()
+async def unload(ctx, extension):
+    bot.unload_extension(f'cmds.{extension}')
+    await ctx.send(f'Un - Loaded {extension} done.')
+
+@bot.command()
+async def reload(ctx, extension):
+    bot.reload_extension(f'cmds.{extension}')
+    await ctx.send(f'Re - Loaded {extension} done.')
+
+for filename in os.listdir('./cmds'):
+    if filename.endswith('.py'):
+        bot.load_extension(f'cmds.{filename[:-3]}')
+
 '''======================================================================================='''
     
+'''    
 @bot.command()
 async def covid19(ctx): #武漢肺炎確診人數
     r = requests.get("https://nidss.cdc.gov.tw/ch/NIDSS_DiseaseMap.aspx?dc=1&dt=5&disease=19CoV")
@@ -70,6 +127,7 @@ async def covid19(ctx): #武漢肺炎確診人數
     output = ["{} {}".format(i,j) for i,j in zip(th,td)]
     print('\n'.join(output))
     await ctx.send('\n'.join(output))
+'''
     
 @bot.command()
 async def add_diary(ctx, date, title,* , content): #增加日記
@@ -126,25 +184,12 @@ async def help(ctx): #我自己的help OuO
     embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False) #3
     embed.add_field(name="owo upload [tag] [date]", value="上傳圖片", inline=False)
     embed.add_field(name="owo search_pic [tag/date]", value="搜尋上傳的圖片", inline=False)
-    embed.add_field(name="owo fox", value="白熊收藏的狐狸照片精選", inline=False) #4
-    embed.add_field(name="owo clean", value="刪除訊息，不過只有白熊可以用", inline=False) #5
+    embed.add_field(name="owo fox", value="狐狸照片精選", inline=False) #4
+    embed.add_field(name="owo clean", value="刪除訊息", inline=False) #5
     embed.add_field(name="owo say [訊息]", value="bot幫你說話，偷嘴人的好工具", inline=False) #6
     embed.set_footer(text="指令持續增加中owo")
     await ctx.send(embed=embed)
     print("已送出help列表owo")
-
-@bot.command()
-async def ping(ctx): #ping
-    message = await ctx.send("ping是...")
-    p = round(bot.latency*1000)
-    await message.edit(content= f"`{p }ms` owo")
-    print(f"`{p }ms` owo")
-    #round 小數點四捨五入
-
-@bot.command()
-async def fox(ctx): 
-    random_pic = random.choice(jdata['url_pic'])
-    await ctx.send(random_pic)
 
 @bot.command()
 async def upload(ctx, tag, date):
@@ -152,6 +197,8 @@ async def upload(ctx, tag, date):
     file = open("picture/"+tag+" "+date+".jpg", "wb")
     file.write(response.content)
     file.close()
+    await ctx.send("圖片儲存完成owo")
+    print("圖片已儲存")
 
 @bot.command()
 async def search_pic(ctx, info):
@@ -179,4 +226,6 @@ async def daily(ctx):
 
 '''======================================================================================='''
 
-bot.run(jdata['TOKEN'])
+if __name__ == "__main__":
+    keep_alive.keep_alive()
+    bot.run(jdata['TOKEN'])
