@@ -47,8 +47,6 @@ async def on_message(msg):
         await msg.channel.send("你也是owo教的嗎")
     elif "sui啦" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://media.discordapp.net/attachments/528777088392757260/904307841861566484/picture_suila_0614.jpg")
-#    elif "新年快樂" in msg.content and msg.author != bot.user:
- #       await msg.channel.send("https://cdn.discordapp.com/attachments/720304918228893746/926503866441285652/received_942388419991119.jpeg")
     elif "星爆" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904369881691074560/f8c2c3e8af3782606fd163b8ff6eb4e6.gif")
     elif "噓" in msg.content and msg.author != bot.user:
@@ -61,8 +59,6 @@ async def on_message(msg):
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904377414778507264/85445f5013f1572f2c208ea3000509f1.png")
     elif "好色喔" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904370301893230592/4fd0c420-1c3c-11ec-b1ff-ea1868351416.png")
-#    elif "np" in msg.content and msg.author != bot.user:
-#        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/878527710975107102/picture_np_0702.jpg")
     elif "好電" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/emojis/855433255871447051.gif?size=96")
     elif "電神" in msg.content and msg.author != bot.user:
@@ -85,8 +81,6 @@ async def on_message(msg):
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914466472624025650/efb1da15cf66f0a35f46184d3eac1d37.png")
     elif "結束" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/902205400538034316/917260438268436520/9711f426f96d75947882122126dd0412.png")
-    #elif "什麼" in msg.content and msg.author != bot.user:
-        #await msg.channel.send("https://media.discordapp.net/attachments/711411107738288160/918524002971041822/df4e11893a88a2e4ae228c471de26f74.JPG")
     await bot.process_commands(msg)
     #if msg.contect in keyword and 
 
@@ -171,6 +165,7 @@ async def info(ctx): #詳細資訊 但其實不怎麼詳細
     print("已送出info owo")
     
 bot.remove_command('help') #刪除原本的help
+
 @bot.command()
 async def help(ctx): #我自己的help OuO
     embed=discord.Embed(title="那個神奇的help選單OuO", description="所有的指令開頭都是owo喔", color=0x37e1dd, timestamp=datetime.datetime.now())
@@ -180,7 +175,6 @@ async def help(ctx): #我自己的help OuO
     embed.add_field(name="owo add_diary [title] [date] [content] ", value="紀錄日記(標題不可有空白，內容可以)", inline=False)
     embed.add_field(name="owo view title [title]", value="以標題去搜尋日記", inline=False)
     embed.add_field(name="owo view date [date]", value="以日期去搜尋日記", inline=False)
-    embed.add_field(name="owo covid19", value="查看目前武漢肺炎人數", inline=False)
     embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False) #3
     embed.add_field(name="owo upload [tag] [date]", value="上傳圖片", inline=False)
     embed.add_field(name="owo search_pic [tag/date]", value="搜尋上傳的圖片", inline=False)
