@@ -179,12 +179,12 @@ async def help(ctx): #我自己的help OuO
     embed.set_thumbnail(url="https://images6.alphacoders.com/674/674742.jpg")
     embed.add_field(name="owo help", value="跳出help清單", inline=False) #1
     embed.add_field(name="owo info", value="有關bot的資訊", inline=False) #2
-    embed.add_field(name="owo add_diary [title] [date] [content] ", value="紀錄日記(標題不可有空白，內容可以)", inline=False)
     embed.add_field(name="owo ping", value="眾所皆知的ping就不用解釋ㄌㄅ", inline=False) #3
     embed.add_field(name="owo fox", value="狐狸照片精選", inline=False) #4
     embed.add_field(name="owo clean", value="刪除訊息", inline=False) #5
     embed.add_field(name="owo say [訊息]", value="bot幫你說話，偷嘴人的好工具", inline=False) #6
-    embed.add_field(name="以下指令暫時無法使用", value="待修復中", inline=False)
+    embed.add_field(name="以下指令暫時無法使用", value="待修復", inline=False)
+    embed.add_field(name="owo add_diary [date] [title] [content] ", value="紀錄日記(標題不可有空白，內容可以)", inline=False)
     embed.add_field(name="owo view title [title]", value="以標題去搜尋日記", inline=False)
     embed.add_field(name="owo view date [date]", value="以日期去搜尋日記", inline=False)
     embed.add_field(name="owo upload [tag] [date]", value="上傳圖片", inline=False)
