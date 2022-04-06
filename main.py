@@ -81,6 +81,12 @@ async def on_message(msg):
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914466472624025650/efb1da15cf66f0a35f46184d3eac1d37.png")
     elif "結束" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/902205400538034316/917260438268436520/9711f426f96d75947882122126dd0412.png")
+    elif msg.content.endswith("的機率") and msg.author != bot.user and "星爆" in msg.content:
+        a=(random.randint(0,100))
+        await msg.channel.send(a,"%",sep="")
+    elif msg.content.endswith("的機率") and msg.author != bot.user:
+        a=(random.randint(0,100))
+        await msg.channel.send(a,"%",sep="")
     await bot.process_commands(msg)
     #if msg.contect in keyword and 
 
