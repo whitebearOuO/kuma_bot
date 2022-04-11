@@ -48,7 +48,7 @@ async def on_message(msg):
         await msg.channel.send("https://media.discordapp.net/attachments/528777088392757260/904307841861566484/picture_suila_0614.jpg")
     elif msg.content.endswith("的機率") and msg.author != bot.user and "星爆" in msg.content:
         await msg.channel.send("48763%")
-    elif msg.content.endswith("的機率") and msg.author != bot.user:
+    elif msg.content.endswith("的機率") and len(msg.content)>3 and msg.author != bot.user:
         a=(random.randint(0,100))
         a=str(a)
         b=(a+"%")
