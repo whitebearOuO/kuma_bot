@@ -131,9 +131,9 @@ async def covid19(ctx): #武漢肺炎確診人數
 '''
     
 @bot.command()
-async def add_diary(ctx, date, title,* , content): #增加日記
-    with open("diary/"+date, 'w') as f:
-        print(title, content, sep= '\n', file = f)
+async def add_diary(ctx, title, date,* , content): #增加日記
+    with open("diary/"+title, 'w') as f:
+        print(date, content, sep= '\n', file = f)
     await ctx.send('done')
     print("日記增加完成owo")
     
