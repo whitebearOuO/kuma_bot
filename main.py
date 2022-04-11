@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import requests,os,urllib
-from bs4 import BeautifulSoup
 import time
 import json
 import random
@@ -116,20 +115,7 @@ for filename in os.listdir('./cmds'):
         bot.load_extension(f'cmds.{filename[:-3]}')
 
 '''======================================================================================='''
-    
-'''    
-@bot.command()
-async def covid19(ctx): #武漢肺炎確診人數
-    r = requests.get("https://nidss.cdc.gov.tw/ch/NIDSS_DiseaseMap.aspx?dc=1&dt=5&disease=19CoV")
-    s = r.text[r.text.find('<span id="ctl00_NIDSSContentPlace_Table">'):].split('\n')[0]
-    soup = BeautifulSoup(s,"html.parser")
-    th = [i.find("th").text for i in soup.find_all("tr")[1:]]
-    td = [i.find("td").text for i in soup.find_all("tr")[1:-1]] + [soup.find_all("th")[-1].text]
-    output = ["{} {}".format(i,j) for i,j in zip(th,td)]
-    print('\n'.join(output))
-    await ctx.send('\n'.join(output))
-'''
-    
+       
 @bot.command()
 async def add_diary(ctx, title, date,* , content): #增加日記
     with open("diary/"+title, 'w') as f:
