@@ -21,6 +21,7 @@ bot = commands.Bot(command_prefix='owo ') #呼叫bot的方法 owo
 
 @bot.event #這裡的會在小黑窗出來
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="vtuber"))
     print('logging as') 
     print(bot.user.name) #bot的名字 kuma
     print(bot.user.id) #bot的id 70啥的
