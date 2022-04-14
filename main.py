@@ -43,6 +43,8 @@ async def on_member_remove(member):
 async def on_message(msg):
     if "owo" in msg.content and msg.author != bot.user:
         await msg.channel.send("owo")
+    elif msg.content.endswith("modo hayaku") and msg.author == bot.user:
+        await msg.channel.send("還要更慢")
     elif msg.content.endswith("owo") and msg.author != bot.user:
         await msg.channel.send("你也是owo教的嗎")
     elif "sui啦" in msg.content and msg.author != bot.user:
