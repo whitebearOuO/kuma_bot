@@ -21,7 +21,7 @@ bot = commands.Bot(command_prefix='owo ') #呼叫bot的方法 owo
 
 @bot.event #這裡的會在小黑窗出來
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="vtuber"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Minecraft 111學年度先行版學習歷程更新"))
     print('logging as') 
     print(bot.user.name) #bot的名字 kuma
     print(bot.user.id) #bot的id 70啥的
@@ -128,7 +128,7 @@ async def add_diary(ctx, title, date,* , content): #增加日記
     
 @bot.command()
 async def view(ctx, which, info): #查看日記
-    if which == 'title':
+    if which == 'date':
         files = os.listdir("diary")
         for i in files:
             path = "diary/"+i
@@ -136,7 +136,7 @@ async def view(ctx, which, info): #查看日記
             title = s.split('\n')[0]
             if title == info:
                 await ctx.send(s)
-    elif which == 'date':
+    elif which == 'which':
         files = os.listdir("diary")
         if info in files:
             #s = open("diary/"+info, 'r').read()
