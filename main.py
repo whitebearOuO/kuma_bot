@@ -41,9 +41,9 @@ async def on_member_remove(member):
 
 @bot.event
 async def on_message(msg):
-    if "owo" in msg.content and msg.author != bot.user:
-        await msg.channel.send("owo")
-    elif msg.content.endswith("modo hayaku"):
+    #if "owo" in msg.content and msg.author != bot.user:
+        #await msg.channel.send("owo")
+    if msg.content.endswith("modo hayaku"):
         await msg.channel.send("還要更慢")
     elif msg.content.endswith("owo") and msg.author != bot.user:
         await msg.channel.send("你也是owo教的嗎")
@@ -60,6 +60,8 @@ async def on_message(msg):
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/904369881691074560/f8c2c3e8af3782606fd163b8ff6eb4e6.gif")
     elif "噓" in msg.content and msg.author != bot.user:
         await msg.channel.send("勇者削弱了 1 點精神")
+    elif "好了ㄝ" in msg.content and msg.author != bot.user:
+        await msg.channel.send("又好了ㄝ 到底")
     elif "騙人" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://media.discordapp.net/attachments/711411107738288160/904376682838892554/47eb58a327c095b5a80512e8e4720bf3.png?width=801&height=450")
     elif "戲劇化" in msg.content and msg.author != bot.user:
@@ -80,8 +82,8 @@ async def on_message(msg):
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914464579352920116/2ddcfb8d83fc6420155791b887806ec9.png")
     elif "幹你娘" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465368360222740/b88f705a275bcacca1044735f7d89035.png")
-    elif "好吧" in msg.content and msg.author != bot.user:
-        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465821827407892/RBoqkhk.png")
+#    elif "好吧" in msg.content and msg.author != bot.user:
+#        await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465821827407892/RBoqkhk.png")
     elif "stay cool" in msg.content and msg.author != bot.user:
         await msg.channel.send("https://cdn.discordapp.com/attachments/711411107738288160/914465989289189386/66e047c5ee25f1afd236f873ea4fa55e.png")
     elif "通知" in msg.content and msg.author != bot.user:
@@ -128,7 +130,7 @@ async def add_diary(ctx, title, date,* , content): #增加日記
     
 @bot.command()
 async def view(ctx, which, info): #查看日記
-    if which == 'date':
+    if which == 'title':
         files = os.listdir("diary")
         for i in files:
             path = "diary/"+i
@@ -136,7 +138,7 @@ async def view(ctx, which, info): #查看日記
             title = s.split('\n')[0]
             if title == info:
                 await ctx.send(s)
-    elif which == 'which':
+    elif which == 'date':
         files = os.listdir("diary")
         if info in files:
             #s = open("diary/"+info, 'r').read()
