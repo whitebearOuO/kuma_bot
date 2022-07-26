@@ -1,12 +1,7 @@
-from typing_extensions import Self
 import discord
 from discord.ext import commands
 from core.classes import Cog_Extension
-import requests,os,urllib
 import time
-import json
-import random
-from time import sleep
 import datetime
 
 class Embed(Cog_Extension):

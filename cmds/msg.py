@@ -4,7 +4,7 @@ from core.classes import Cog_Extension
 
 class Msg(Cog_Extension):
    @commands.Cog.listener()
-   async def on_message(self,msg):
+   async def on_message(self, msg):
 
         if "362261823040389123" in msg.content and msg.author != self.bot.user:
             await msg.channel.send("拜託你們，先幫ㄅㄒ撐個10秒左右就好")

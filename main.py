@@ -29,18 +29,6 @@ async def on_ready():
     print(bot.user.id) #bot的id 70啥的
     print('------')
 
-@bot.event
-async def on_member_join(member):
-	print(f'{member} join!')
-	channel = bot.get_channel(int(jdata['Welcome_channel']))
-	await channel.send(f'{member} join! :tada::tada::tada:')
-
-@bot.event
-async def on_member_remove(member):
-	print(f'{member} leave!')
-	channel = bot.get_channel(int(jdata['Leave_channel']))
-	await channel.send(f'{member} leave!:disappointed_relieved:')
-
 '''======================================================================================='''
 
 # Cog_Extension 指令
@@ -59,10 +47,11 @@ async def unload(ctx, extension):
 async def reload(ctx, extension):
     bot.reload_extension(f'cmds.{extension}')
     await ctx.send(f'Re - Loaded {extension} done.')
-
+    
 for filename in os.listdir('./cmds'):
     if filename.endswith('.py'):
         bot.load_extension(f'cmds.{filename[:-3]}')
+        break
 
 '''======================================================================================='''
 
