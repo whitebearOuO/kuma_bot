@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from core.classes import Cog_Extension
+import random
 
 class Msg(Cog_Extension):
    @commands.Cog.listener()
