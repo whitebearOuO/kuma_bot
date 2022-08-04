@@ -45,6 +45,8 @@ async def on_message(msg):
             await msg.channel.send("拜託你們，先幫ㄅㄒ撐個10秒左右就好")
     elif msg.content.endswith("owo") and msg.author != bot.user:
         await msg.channel.send("你也是owo教的嗎")
+    elif msg.content.endswith("好了ㄝ") and msg.author != bot.user:
+        await msg.channel.send("又好了ㄝ 到底")
     elif msg.content.endswith("z_sui_yada") and msg.author != bot.user:
             await msg.channel.send("https://cdn.discordapp.com/emojis/882566781011644427.gif?size=96&quality=lossless")
     elif "sui啦" in msg.content and msg.author != bot.user:
