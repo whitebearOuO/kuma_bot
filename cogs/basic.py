@@ -36,6 +36,22 @@ class Basic(commands.Cog):
         c = int(c) if c.is_integer() else c
         await ctx.respond(f"{a} - {b} = {c}", ephemeral=True)
     
+    @math.command(name="multiplication", description="乘法")
+    async def multiplication(self, ctx, a: float, b: float):
+        a = int(a) if a.is_integer() else a
+        b = int(b) if b.is_integer() else b
+        c = a * b
+        c = int(c) if c.is_integer() else c
+        await ctx.respond(f"{a} × {b} = {c}", ephemeral=True)
+        
+    @math.command(name="division", description="除法")
+    async def multiplication(self, ctx, a: float, b: float):
+        a = int(a) if a.is_integer() else a
+        b = int(b) if b.is_integer() else b
+        c = a / b
+        c = int(c) if c.is_integer() else c
+        await ctx.respond(f"{a} ÷ {b} = {c}", ephemeral=True)
+    
     @advanced_math.command()
     async def midpoint(self, ctx, x1: float, y1: float, x2: float, y2: float):
         mid_x = (x1 + x2)/2
