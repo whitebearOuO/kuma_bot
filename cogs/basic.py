@@ -11,8 +11,8 @@ class Basic(commands.Cog):
 #------------------
 
     @discord.slash_command(name="ping", description="測試bot延遲")
-    async def ping(ctx: discord.ApplicationContext):
-        await ctx.respond(f"{round(bot.latency*1000)} ms", ephemeral=True)
+    async def ping(self, ctx: discord.ApplicationContext):
+        await ctx.respond(f"{round(self.bot.latency*1000)} ms", ephemeral=True)
 
     math = discord.SlashCommandGroup("math", "讓bot代替你當計算機") # create a Slash Command Group called "math"
     advanced_math = math.create_subgroup(

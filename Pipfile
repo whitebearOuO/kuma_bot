@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 py-cord = "*"
+google-generativeai = "*"
+
+# for loading .env files (load_dotenv)
+python-dotenv = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.10"
-python_full_version = "3.10.18"
